@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio — Ingeniero Mecánico</title>
+  <meta name="description" content="Portafolio profesional de [Tu Nombre] — Ingeniero Mecánico. Proyectos, habilidades y contacto." />
+
+  <!-- Styles: simple, responsive, moderno -->
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#1fb6ff;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --max-w:1100px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#081023 0%, #06101b 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:32px 16px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--max-w);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px
+    }
+    .logo{
+      width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#6ef3c5);display:flex;align-items:center;justify-content:center;color:#042033;font-weight:700;font-size:18px;
+    }
+    h1{margin:0;font-size:22px}
+    p.lead{margin:4px 0 0;color:var(--muted);font-size:14px}
+
+    nav a{
+      color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px
+    }
+    .hero{
+      display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:center;margin-bottom:28px
+    }
+    @media (max-width:880px){.hero{grid-template-columns:1fr;}.container{padding:0 8px}}
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:0 6px 18px rgba(2,8,23,0.6);
+    }
+    .about{
+      min-height:160px;
+    }
+
+    .cta{
+      margin-top:16px;display:flex;gap:12px;flex-wrap:wrap
+    }
+    .btn{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 14px;border-radius:10px;color:var(--muted);cursor:pointer;font-weight:600;font-size:14px
+    }
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#6ef3c5);color:#042033;border:0}
+
+    .profile-card{
+      display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px
+    }
+    .avatar{width:120px;height:120px;border-radius:16px;background:linear-gradient(180deg,#112233,#0b2238);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Projects grid */
+    .section-title{display:flex;justify-content:space-between;align-items:end;margin:16px 0}
+    .projects{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px
+    }
+    @media (max-width:1100px){.projects{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.projects{grid-template-columns:1fr}}
+
+    .project{
+      overflow:hidden;border-radius:12px;padding:0;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      display:flex;flex-direction:column;height:220px
+    }
+    .proj-thumb{flex:1;background-position:center;background-size:cover}
+    .proj-body{padding:12px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:var(--glass);color:var(--muted)}
+
+    /* Skills and contact */
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:880px){.grid-2{grid-template-columns:1fr}}
+
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Simple modal for project details */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(3,6,12,0.6);padding:20px}
+    .modal.open{display:flex}
+    .modal-card{max-width:880px;width:100%;background:#061428;padding:20px;border-radius:12px}
+    .modal-close{float:right;background:transparent;border:0;color:var(--muted);font-size:18px;cursor:pointer}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">IP</div>
+        <div>
+          <h1>Iván Penagos — Ingeniero Mecánico</h1>
+          <p class="lead">Mecánica computacional · CFD · Prototipado · Energía solar · Accesibilidad</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <article class="card about">
+          <h2>Sobre mí</h2>
+          <p>Ingeniero mecánico (egresado 2016). Experiencia en diseño de maquinaria industrial, elevadores para personas con movilidad reducida, y proyectos fotovoltaicos residenciales. Habilidades sólidas en CAD (SolidWorks, AutoCAD), análisis básico con Python, y gestión de proyectos de instalación.</p>
+
+          <div class="cta">
+            <button class="btn primary" onclick="location.href='#proyectos'">Ver proyectos</button>
+            <button class="btn" onclick="location.href='#contacto'">Descargar CV</button>
+            <button class="btn" onclick="window.open('https://github.com/tu-usuario','_blank')">Ver GitHub</button>
+          </div>
+        </article>
+
+        <aside class="card profile-card">
+          <div class="avatar">TN</div>
+          <div>
+            <div style="font-weight:700">[Tu Nombre]</div>
+            <div class="small">Ingeniero Mecánico — Diseño · CAD · Proyectos</div>
+            <div class="small">Ubicación: Colombia</div>
+            <div style="margin-top:8px;display:flex;gap:8px;justify-content:center">
+              <a class="btn" href="#contacto">Escríbeme</a>
+              <a class="btn" href="mailto:tu.email@ejemplo.com">tu.email@ejemplo.com</a>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="proyectos">
+        <div class="section-title">
+          <h2>Proyectos destacados</h2>
+          <div class="small">Haz clic en un proyecto para ver más</div>
+        </div>
+
+        <div class="projects">
+          <!-- Proyecto 1 -->
+          <article class="project card" data-title="Elevador Residencial" data-desc="Diseño y fabricación de elevador para uso residencial, adaptado a espacios reducidos. Incluye planos CAD, lista de materiales y pruebas de carga." data-img="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80">
+            <div class="proj-thumb" style="background-image:url('ELEVADOR1.PNG')"></div>
+            <div class="proj-body">
+              <h3>Elevador Residencial</h3>
+              <p class="small">Elevadores · Diseño CAD · Accesibilidad</p>
+              <div class="tags">
+                <span class="tag">SolidWorks</span>
+                <span class="tag">FEM (básico)</span>
+                <span class="tag">Instalación</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 2 -->
+          <article class="project card" data-title="Sistema Solar Residencial" data-desc="Diseño e instalación de sistema fotovoltaico para vivienda, con dimensionamiento, simulación de producción energética y conexión al inversor." data-img="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80">
+            <div class="proj-thumb" style="background-image:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80')"></div>
+            <div class="proj-body">
+              <h3>Sistema Solar Residencial</h3>
+              <p class="small">Energía · Instalaciones · Diseño</p>
+              <div class="tags">
+                <span class="tag">Autocad</span>
+                <span class="tag">Cálculo de sombras</span>
+                <span class="tag">Instalación</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 3 -->
+          <article class="project card" data-title="Carro Transportador" data-desc="Diseño de carro transportador para línea de producción, optimizado para montaje y manutención. Documentación técnica y planos de fabricación." data-img="https://images.unsplash.com/photo-1515582001914-0d7c48d8d1e0?auto=format&fit=crop&w=1200&q=80">
+            <div class="proj-thumb" style="background-image:url('https://images.unsplash.com/photo-1515582001914-0d7c48d8d1e0?auto=format&fit=crop&w=1200&q=80')"></div>
+            <div class="proj-body">
+              <h3>Carro Transportador</h3>
+              <p class="small">Maquinaria · Fabricación</p>
+              <div class="tags">
+                <span class="tag">AutoCAD</span>
+                <span class="tag">Dibujo de taller</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Puedes duplicar y agregar más proyectos -->
+        </div>
+      </section>
+
+      <section id="habilidades" style="margin-top:22px">
+        <div class="grid-2">
+          <div class="card">
+            <h2>Habilidades técnicas</h2>
+            <ul>
+              <li>SolidWorks — Modelado 3D, ensamblajes, planos</li>
+              <li>AutoCAD — Dibujo técnico y planos de taller</li>
+              <li>Dimensionamiento estructural básico / FEM (hand calculations + software)</li>
+              <li>Instalaciones fotovoltaicas — dimensionamiento y puesta en marcha</li>
+              <li>Python (nivel básico) para automatización y post-procesado</li>
+              <li>Excel avanzado — Macros, tablas dinámicas</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Metodologías y herramientas</h2>
+            <p class="small">Gestión de proyectos, lectura de normas técnicas, documentación técnica para fabricación.</p>
+            <div style="margin-top:8px">
+              <div class="small">Idiomas</div>
+              <div>Español (Nativo) · Inglés (C1)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" style="margin-top:22px">
+        <div class="card">
+          <h2>Contacto</h2>
+          <p class="small">Interesado en colaborar o ver más detalles de mis proyectos. Puedes escribirme por email o ver mi código y archivos en GitHub.</p>
+
+          <form onsubmit="event.preventDefault(); alert('Enviar: ' + (document.getElementById('msg').value || '[sin mensaje]'));" style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+            <input id="name" placeholder="Nombre" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+            <input id="email" placeholder="Email" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+            <textarea id="msg" rows="4" placeholder="Mensaje" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+            <div style="display:flex;gap:8px">
+              <button class="btn primary" type="submit">Enviar mensaje</button>
+              <a class="btn" href="mailto:tu.email@ejemplo.com">Enviar por email</a>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <footer>
+        <div class="small">© <span id="year"></span> [Tu Nombre] — Ingeniero Mecánico · <a href="https://github.com/tu-usuario" style="color:var(--muted);text-decoration:none">GitHub</a></div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal-card card">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h3 id="m-title"></h3>
+      <p id="m-desc" class="small"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Abrir modal al clickear proyecto
+    document.querySelectorAll('.project').forEach(p => {
+      p.addEventListener('click', ()=>{
+        const title = p.getAttribute('data-title');
+        const desc = p.getAttribute('data-desc');
+        const img = p.getAttribute('data-img');
+        document.getElementById('m-title').textContent = title;
+        document.getElementById('m-desc').textContent = desc;
+        document.getElementById('modal').classList.add('open');
+        document.getElementById('modal').setAttribute('aria-hidden','false');
+      })
+    })
+    function closeModal(){
+      document.getElementById('modal').classList.remove('open');
+      document.getElementById('modal').setAttribute('aria-hidden','true');
+    }
+
+    // Cerrar con Esc
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); })
+  </script>
+</body>
+</html>
